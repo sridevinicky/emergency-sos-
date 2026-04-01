@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapid Crisis | Emergency SOS Platform</title>
+    <meta name="description" content="AI-powered emergency response platform for hospitality spaces.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Full screen animated flash overlay for alerts -->
+    <div id="flash-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">🚨 Rapid Crisis</div>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#sos-page">Report</a></li>
+            <li><a href="#map-dashboard">Map</a></li>
+            <li><a href="#staff-dashboard">Dashboard</a></li>
+        </ul>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <header id="hero" class="section hero">
+        <div class="hero-content">
+            <h1>Instant Emergency Response for Hospitality Spaces</h1>
+            <p>Report emergencies instantly and connect with responders in real-time using AI.</p>
+
+            <div class="main-sos">
+                <button class="sos-btn" id="hero-sos-btn" title="Tap to trigger immediate SOS">
+                    <span class="sos-text">SOS</span>
+                </button>
+            </div>
+
+            <div class="quick-actions">
+                <button class="action-btn fire" onclick="prefillAlert('Fire Hazard')">🔥 Fire</button>
+                <button class="action-btn medical" onclick="prefillAlert('Medical Emergency')">⚕️ Medical</button>
+                <button class="action-btn security" onclick="prefillAlert('Security Threat')">🛡️ Security</button>
+            </div>
+
+            <p class="system-expl">Our AI system instantly classifies alerts and notifies security teams.</p>
+        </div>
+    </header>
+
+    <!-- 2. SOS Alert Page -->
+    <section id="sos-page" class="section sos-section">
+        <div class="container">
+            <h2>Send Emergency Alert</h2>
+            <div class="alert-form card">
+                <button class="sos-btn small" id="form-sos-btn">SOS</button>
+                <div class="input-group">
+                    <input type="text" id="emergency-desc" placeholder="Describe the emergency...">
+                    <button class="voice-btn" title="Voice Input">🎤</button>
+                </div>
+                <div class="location-group">
+                    <span class="loc-icon">📍</span>
+                    <input type="text" id="user-location" placeholder="Auto-detecting location..." readonly>
+                    <button class="detect-btn" id="detect-loc">Detect</button>
+                </div>
+                <div class="contacts-group">
+                    <h4>Notify Close Contacts</h4>
+                    <div class="contact-toggles">
+                        <label class="contact-toggle"><input type="checkbox" class="contact-check" value="Mom" checked>
+                            <span class="contact-name">Mom (Family)</span></label>
+                        <label class="contact-toggle"><input type="checkbox" class="contact-check" value="Sarah J."
+                                checked> <span class="contact-name">Sarah J. (Friend)</span></label>
+                        <label class="contact-toggle"><input type="checkbox" class="contact-check" value="Dr. Smith">
+                            <span class="contact-name">Dr. Smith</span></label>
+                    </div>
+                </div>
+                <button class="send-alert-btn" id="send-alert">SEND ALERT NOW</button>
+                <div id="alert-status" class="status-msg hidden">Alert sent successfully! Help is on the way.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Live Crisis Map -->
+    <section id="map-dashboard" class="section map-section">
+        <div class="container">
+            <h2>Live Crisis Map</h2>
+            <div class="map-container card">
+                <div class="map-visual">
+                    <!-- CSS map backdrop and animated points -->
+                    <div class="map-marker pending" style="top: 35%; left: 45%;" title="Pending Incident"></div>
+                    <div class="map-marker responding" style="top: 60%; left: 55%;" title="Responders on way"></div>
+                    <div class="map-marker resolved" style="top: 25%; left: 80%;" title="Resolved Incident"></div>
+                </div>
+                <div class="map-legend">
+                    <div class="legend-item"><span class="dot pending"></span> Pending</div>
+                    <div class="legend-item"><span class="dot responding"></span> Responding</div>
+                    <div class="legend-item"><span class="dot resolved"></span> Resolved</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Staff Dashboard -->
+    <section id="staff-dashboard" class="section dashboard-section">
+        <div class="container">
+            <h2>Staff Dashboard</h2>
+            <div class="table-container card">
+                <table class="dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>Alert ID</th>
+                            <th>Type</th>
+                            <th>Location</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dashboard-body">
+                        <!-- Populated dynamically by script.js -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Features Section -->
+    <section id="features" class="section features-section">
+        <div class="container">
+            <h2>Platform Features</h2>
+            <div class="grid features-grid">
+                <div class="feature-card card">
+                    <div class="icon">🧠</div>
+                    <h3>AI Classification</h3>
+                    <p>Automatically categorizes emergencies to route them to the correct department instantly.</p>
+                </div>
+                <div class="feature-card card">
+                    <div class="icon">⚡</div>
+                    <h3>Real-Time Alerts</h3>
+                    <p>Instant push notifications sent directly to staff devices and connected dispatch platforms.</p>
+                </div>
+                <div class="feature-card card">
+                    <div class="icon">🌍</div>
+                    <h3>Multi-Language</h3>
+                    <p>Automatic translation of alerts for international guests and diverse support staff.</p>
+                </div>
+                <div class="feature-card card">
+                    <div class="icon">🔔</div>
+                    <h3>Smart Escalation</h3>
+                    <p>Intelligent notification escalation protocols ensure no critical alert goes unnoticed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. How It Works -->
+    <section id="how-it-works" class="section steps-section">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="grid steps-grid">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h4>Press SOS</h4>
+                    <p>Instantly trigger a high-priority alert system.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h4>Describe</h4>
+                    <p>Provide details using quick actions, text, or voice.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h4>AI Analyzes</h4>
+                    <p>System identifies the severity and exact nature.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <h4>Staff Notified</h4>
+                    <p>Coordinated responders are deployed instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <h3>Rapid Crisis</h3>
+                <p>Ensuring absolute safety and rapid response coordination in hospitality environments.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Emergency Guide</a></li>
+                    <li><a href="#">Contact Support</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Rapid Crisis Platform. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Audio Element for alert sounds -->
+    <audio id="alert-sound" src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg"
+        preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
